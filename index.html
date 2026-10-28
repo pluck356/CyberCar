@@ -109,6 +109,7 @@ function applyLanguage(lang){
   setText(document.querySelector('.stat:nth-of-type(1) span'),ui.speed);
   setText(document.querySelector('.stat:nth-of-type(2) span'),ui.accel);
   setText(document.querySelector('.stat:nth-of-type(3) span'),ui.handling);
+  document.querySelectorAll('.stat').forEach((el,i)=>setText(el.querySelector('span'),[ui.speed,ui.accel,ui.handling][i]));
   setText(document.querySelector('.nitrobox .tiny'),ui.nitro);
   setText(document.querySelector('.hudtop .hudcard:nth-child(1) .tiny'),ui.velocity);
   setText(document.querySelector('.hudtop .hudcard:nth-child(2) .tiny'),ui.distance);
