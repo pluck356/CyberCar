@@ -71,7 +71,7 @@ h1{font-size:clamp(42px,7vw,78px);line-height:.86;letter-spacing:-.065em;margin:
 </div>
 </div>
 <div id="countdown" class="hidden"></div>
-<div id="toast"></div>
+<div id="toast"></div><section id="pausemenu" class="screen hidden" style="z-index:10;background:#030711d9;backdrop-filter:blur(10px)"><div class="panel" style="width:min(360px,100%);text-align:center"><div class="eyebrow">RACE CONTROL</div><h2 style="font-size:34px;margin:0 0 8px">PAUSED</h2><p style="color:#9fb4c7;font-size:12px">退出时按当前进度结算积分。</p><div class="actions"><button class="btn secondary" id="resume" style="flex:1">继续</button><button class="btn pink" id="exit" style="flex:1">退出并结算</button></div></div></section>
 <section id="result" class="screen hidden"><div class="resultbox"><div class="eyebrow">RUN COMPLETE / CITY NIGHT</div><h2 id="resulttitle">NICE RUN.</h2><p>霓虹之下，每一秒都算数。</p><div class="resultscore" id="resultscore">0</div><div class="resultgrid"><div><small>DISTANCE</small><b id="resultdistance">0.0 KM</b></div><div><small>TOP SPEED</small><b id="resultspeed">0 KM/H</b></div><div><small>NEAR MISSES</small><b id="resultnear">0</b></div><div><small>REWARD</small><b id="resultreward">¢0</b></div></div><div class="actions"><button class="btn secondary" id="garagebtn" style="flex:1">BACK TO GARAGE</button><button class="btn" id="again" style="flex:1">RACE AGAIN ↗</button></div></div></section>
 <script type="module">
 import * as THREE from 'three';
