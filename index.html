@@ -99,7 +99,7 @@ function applyLanguage(lang){
  const q=u||{paint:'车身涂装',speed:d.topSpeed,accel:d.accel,handling:d.handling,foot:d.footnote,level:'等级 ',boost:'氮气\\n加速',swatches:[]};
  document.documentElement.lang=({zh:'zh-CN',en:'en',ja:'ja',ko:'ko',es:'es'})[lang]||'zh-CN';
  const put=(s,v)=>{const el=$(s);if(el&&v!==undefined)el.textContent=v};
- put('.subtitle',d.subtitle);put('#start',d.start);put('#upgrade',d.upgrade+' · ¢'+(upgradeLevel*500));put('.brand span','— '+d.nightRun);put('.menu .eyebrow',d.nextGen);put('h1',lang==='zh'?'掌控夜色。':lang==='ja'?'夜を支配せよ。':lang==='ko'?'밤을 지배하라.':lang==='es'?'DOMINA LA NOCHE.':'OWN THE NIGHT.');
+ put('.subtitle',d.subtitle);put('#start',d.start);const upgradeBtn=$('#upgrade');if(upgradeBtn)upgradeBtn.innerHTML=d.upgrade+' · ¢<span id="price">'+(upgradeLevel*500)+'</span>';put('.brand span','— '+d.nightRun);put('.menu .eyebrow',d.nextGen);put('h1',lang==='zh'?'掌控夜色。':lang==='ja'?'夜を支配せよ。':lang==='ko'?'밤을 지배하라.':lang==='es'?'DOMINA LA NOCHE.':'OWN THE NIGHT.');
  const heads=document.querySelectorAll('.panelhead span');if(heads[0])heads[0].textContent=d.vehicle;if(heads[1])heads[1].textContent=q.paint;if(heads[2])heads[2].textContent=d.tuning;
  const stats=document.querySelectorAll('.stat');[q.speed,q.accel,q.handling].forEach((v,i)=>{if(stats[i]&&stats[i].querySelector('span'))stats[i].querySelector('span').textContent=v});
  const pl=document.querySelector('#garage .panel > div[style*="letter-spacing"]');if(pl)pl.textContent=q.paint;
