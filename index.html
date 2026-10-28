@@ -15,7 +15,7 @@
 #garage{justify-content:flex-start;background:linear-gradient(90deg,rgba(3,7,15,.9),rgba(3,7,15,.56) 43%,rgba(3,7,15,.08) 75%,rgba(3,7,15,.18))}
 .brand{position:absolute;top:clamp(20px,5vh,48px);left:clamp(20px,5vw,64px);letter-spacing:.3em;font-size:11px;color:var(--cyan);font-weight:800}.brand b{color:white;font-size:13px}
 .menu{width:min(430px,100%);margin-top:55px}.eyebrow{color:var(--pink);letter-spacing:.25em;font-size:10px;font-weight:800;text-transform:uppercase;margin-bottom:12px}
-h1{font-size:clamp(42px,7vw,78px);line-height:.86;letter-spacing:-.065em;margin:0 0 18px;font-weight:950;text-shadow:0 0 32px rgba(84,247,255,.12)}h1 span{color:var(--cyan)}.subtitle{font-size:12px;line-height:1.8;color:#aab8ca;max-width:320px;margin-bottom:26px}
+h1{font-size:clamp(42px,7vw,78px);line-height:.86;letter-spacing:-.065em;margin:0 0 18px;font-weight:950;text-shadow:0 0 32px rgba(84,247,255,.12)}h1 span{color:var(--cyan)}.subtitle{font-size:12px;line-height:1.8;color:#aab8ca;max-width:320px;margin-bottom:18px}.trackpick{display:flex;gap:7px;margin:0 0 13px}.trackpick button{flex:1;min-width:0;padding:10px 5px;background:#0a1626;color:#b5c9da;border:1px solid #345064;font-size:10px;letter-spacing:.04em}.trackpick button.active{color:#06131d;background:var(--cyan);border-color:var(--cyan);font-weight:900}.speedfx{position:fixed;inset:0;z-index:3;pointer-events:none;opacity:0;background:repeating-linear-gradient(100deg,transparent 0 7%,#b5faff22 7.2% 7.35%,transparent 7.6% 14%),repeating-linear-gradient(80deg,transparent 0 12%,#ff3c9e18 12.1% 12.25%,transparent 12.5% 22%);mix-blend-mode:screen;transition:opacity .2s}
 .panel{background:linear-gradient(135deg,rgba(11,20,36,.84),rgba(8,12,24,.56));border:1px solid var(--line);box-shadow:0 18px 60px #0007,inset 0 1px #ffffff0b;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);padding:16px;border-radius:3px}
 .panelhead{display:flex;justify-content:space-between;align-items:center;font-size:10px;letter-spacing:.18em;color:#a8bed0;margin-bottom:14px}.panelhead strong{color:var(--cyan)}
 .swatches{display:flex;gap:9px;margin:10px 0 16px}.swatch{width:31px;height:31px;border-radius:50%;border:2px solid #ffffff44;box-shadow:0 0 0 2px transparent;cursor:pointer}.swatch.active{box-shadow:0 0 0 2px var(--cyan),0 0 18px var(--cyan)}
@@ -33,7 +33,7 @@ h1{font-size:clamp(42px,7vw,78px);line-height:.86;letter-spacing:-.065em;margin:
 <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.164.1/build/three.module.js"}}</script>
 </head>
 <body>
-<div id="vignette"></div><div id="scan"></div><select id="language" aria-label="Language / 语言" style="position:fixed;z-index:20;right:18px;top:calc(env(safe-area-inset-top) + 16px);padding:9px 11px;background:#071321e8;color:#dffcff;border:1px solid #54f7ff88;border-radius:4px;font-size:12px;max-width:145px"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option></select>
+<div id="vignette"></div><div id="scan"></div><div id="speedfx"></div><select id="language" aria-label="Language / 语言" style="position:fixed;z-index:20;right:18px;top:calc(env(safe-area-inset-top) + 16px);padding:9px 11px;background:#071321e8;color:#dffcff;border:1px solid #54f7ff88;border-radius:4px;font-size:12px;max-width:145px"><option value="zh">中文</option><option value="en">English</option><option value="ja">日本語</option><option value="ko">한국어</option><option value="es">Español</option></select>
 <section id="garage" class="screen">
 <div class="brand">NV / <b>NEON VELOCITY</b> <span style="color:#688099">— NIGHT RUN</span></div>
 <div class="menu">
@@ -54,7 +54,7 @@ h1{font-size:clamp(42px,7vw,78px);line-height:.86;letter-spacing:-.065em;margin:
 <div class="stat"><span>TOP SPEED</span><div class="bar"><i id="speedbar" style="width:64%"></i></div><b id="speedstat">240</b></div>
 <div class="stat"><span>ACCEL.</span><div class="bar"><i id="accelbar" style="width:48%"></i></div><b id="accelstat">4.8</b></div>
 <div class="stat"><span>HANDLING</span><div class="bar"><i id="handlebar" style="width:58%"></i></div><b id="handlestat">58</b></div>
-<div class="actions"><button id="upgrade" class="btn secondary" style="flex:1">UPGRADE · ¢<span id="price">500</span></button><button id="start" class="btn" style="flex:1.15">START RACE ↗</button></div>
+<div class="trackpick" aria-label="选择赛道"><button type="button" class="active" data-track="city">NEON CITY</button><button type="button" data-track="coast">COASTLINE</button><button type="button" data-track="industrial">INDUSTRIAL</button></div><div class="actions"><button id="upgrade" class="btn secondary" style="flex:1">UPGRADE · ¢<span id="price">500</span></button><button id="start" class="btn" style="flex:1.15">START RACE ↗</button></div>
 <div class="footnote">UPGRADES ARE SAVED LOCALLY · DRAG TO STEER ON TOUCHSCREENS · SOUND STARTS AFTER YOUR FIRST TAP</div>
 </div>
 </div>
