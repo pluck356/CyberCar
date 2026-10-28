@@ -96,7 +96,31 @@ function applyLanguage(lang){
  put('.hudtop .hudcard:nth-child(1) .tiny',d.velocity);put('.hudtop .hudcard:nth-child(2) .tiny',d.distance);put('.hudtop .hudcard:nth-child(3) .tiny',d.credits);
  put('.nitrobox .tiny',d.nitro);put('#nitrolabel',d.ready);
  
- put('#resultgrid',undefined);
+ const ui={
+ zh:{paint:'车身涂装',speed:'最高速度',accel:'加速性能',handling:'弯道操控',nitro:'氮气加速',velocity:'速度',distance:'距离',credits:'积分',paused:'比赛暂停',resultEyebrow:'竞速结束 / 霓虹之夜',dist:'行驶距离',position:'比赛名次',top:'最高速度',near:'惊险超车',reward:'比赛奖励',garage:'返回车库',boost:'氮气加速',foot:'升级数据保存在本机 · 触屏拖动转向 · 首次点击后启用音效'},
+ en:{paint:'PAINT FINISH',speed:'TOP SPEED',accel:'ACCELERATION',handling:'CORNERING',nitro:'NITROUS / BOOST',velocity:'VELOCITY',distance:'DISTANCE',credits:'CREDITS',paused:'PAUSED',resultEyebrow:'RUN COMPLETE / CITY NIGHT',dist:'DISTANCE',position:'RACE POSITION',top:'TOP SPEED',near:'NEAR MISSES',reward:'REWARD',garage:'BACK TO GARAGE',boost:'N₂O BOOST',foot:'UPGRADES SAVED LOCALLY · DRAG TO STEER · SOUND AFTER FIRST TAP'},
+ ja:{paint:'ボディカラー',speed:'最高速度',accel:'加速性能',handling:'コーナリング',nitro:'ニトロブースト',velocity:'速度',distance:'距離',credits:'クレジット',paused:'一時停止',resultEyebrow:'レース終了 / シティナイト',dist:'走行距離',position:'レース順位',top:'最高速度',near:'ニアミス',reward:'報酬',garage:'ガレージへ',boost:'ニトロブースト',foot:'強化は端末に保存 · ドラッグで操舵 · 初回タップ後にサウンド有効'},
+ ko:{paint:'차체 색상',speed:'최고 속도',accel:'가속 성능',handling:'코너링',nitro:'니트로 부스트',velocity:'속도',distance:'거리',credits:'크레딧',paused:'일시 정지',resultEyebrow:'레이스 완료 / 시티 나이트',dist:'주행 거리',position:'레이스 순위',top:'최고 속도',near:'아슬아슬 추월',reward:'보상',garage:'차고로 돌아가기',boost:'니트로 부스트',foot:'업그레이드는 기기에 저장 · 드래그로 조향 · 첫 탭 후 사운드 활성화'},
+ es:{paint:'PINTURA',speed:'VELOCIDAD MÁXIMA',accel:'ACELERACIÓN',handling:'MANEJO EN CURVAS',nitro:'NITRO / TURBO',velocity:'VELOCIDAD',distance:'DISTANCIA',credits:'CRÉDITOS',paused:'EN PAUSA',resultEyebrow:'CARRERA TERMINADA / NOCHE',dist:'DISTANCIA',position:'POSICIÓN',top:'VELOCIDAD MÁXIMA',near:'ADELANTAMIENTOS CERCANOS',reward:'RECOMPENSA',garage:'VOLVER AL GARAJE',boost:'NITRO',foot:'MEJORAS GUARDADAS · DESLIZA PARA GIRAR · SONIDO TRAS EL PRIMER TOQUE'}
+ }[lang]||null;
+ if(ui){
+  const setText=(el,txt)=>{if(el&&txt)el.textContent=txt};
+  setText(document.querySelector('#garage .panel > div[style*="letter-spacing"]'),ui.paint);
+  setText(document.querySelector('.stat:nth-of-type(1) span'),ui.speed);
+  setText(document.querySelector('.stat:nth-of-type(2) span'),ui.accel);
+  setText(document.querySelector('.stat:nth-of-type(3) span'),ui.handling);
+  setText(document.querySelector('.nitrobox .tiny'),ui.nitro);
+  setText(document.querySelector('.hudtop .hudcard:nth-child(1) .tiny'),ui.velocity);
+  setText(document.querySelector('.hudtop .hudcard:nth-child(2) .tiny'),ui.distance);
+  setText(document.querySelector('.hudtop .hudcard:nth-child(3) .tiny'),ui.credits);
+  setText(document.querySelector('#pausemenu h2'),ui.paused);
+  setText(document.querySelector('#result .resultbox .eyebrow'),ui.resultEyebrow);
+  const smalls=document.querySelectorAll('#resultgrid small');
+  [ui.dist,ui.position,ui.top,ui.near,ui.reward].forEach((v,i)=>setText(smalls[i],v));
+  setText(document.querySelector('#garagebtn'),ui.garage);
+  setText(document.querySelector('.footnote'),ui.foot);
+  setText(document.querySelector('#boost'),ui.boost);
+ }
  localStorage.setItem('nv_language',lang);
 }
 $('#language').value=localStorage.getItem('nv_language')||'zh';
