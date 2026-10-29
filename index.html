@@ -312,7 +312,7 @@ rivals.forEach((r,i)=>{
  r.mesh.rotation.y=trackHeading(r.progress)-THREE.MathUtils.clamp((r.laneTarget-r.lane)*.035,-.08,.08);
  if(!r.passed&&distance>=r.progress){r.passed=true;score+=400;showToast((languageText[$('#language').value]||languageText.zh).overtake);beep(760,.06)}
  if(r.contactCooldown<=0&&Math.abs(rel)<3.6&&Math.abs(car.position.x-r.mesh.position.x)<1.75&&speed>45){
-  r.contactCooldown=2.3;speed=Math.max(42,speed*.78);cameraShake=Math.max(cameraShake,.25);collisions++;showToast('车身接触 · 稳住方向');beep(145,.12);
+  r.contactCooldown=2.3;speed=Math.max(42,speed*.78);cameraShake=Math.max(cameraShake,.25);collisions++;if(drivingSettings.haptic==='on'&&navigator.vibrate)navigator.vibrate(35);showToast('车身接触 · 稳住方向');beep(145,.12);
  }
 });
 $('#raceprogress').textContent=(languageText[$('#language').value]||languageText.zh).progress+' '+Math.min(100,Math.round(distance/finishDistance*100))+'% · '+cfg.label+' AI';
