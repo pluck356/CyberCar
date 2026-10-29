@@ -204,8 +204,9 @@ const pinkLight=new THREE.PointLight(0xff258d,24,32);pinkLight.position.set(8,5,
 const cyanLight=new THREE.PointLight(0x1ceeff,25,35);cyanLight.position.set(-9,5,-18);scene.add(cyanLight);
 const world=new THREE.Group();scene.add(world);
 const weatherLayer=new THREE.Group();scene.add(weatherLayer);const rainDrops=[];const rainMaterial=new THREE.LineBasicMaterial({color:0x91dfff,transparent:true,opacity:.4});for(let i=0;i<110;i++){const g=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,0,0),new THREE.Vector3(-.035,-.75,0)]);const line=new THREE.Line(g,rainMaterial);line.visible=false;weatherLayer.add(line);rainDrops.push(line)}
-const horizon=new THREE.Group();scene.add(horizon);const mountainMat=mat(0x101d31,.95,.05,.08);for(let i=0;i<38;i++){const h=18+Math.random()*42,w=18+Math.random()*38;const mountain=new THREE.Mesh(new THREE.ConeGeometry(w,h,5),mountainMat);mountain.position.set((i%2?1:-1)*(70+Math.random()*170),h*.42,-120-Math.random()*1000);mountain.rotation.y=Math.random()*Math.PI;horizon.add(mountain)}
+const horizon=new THREE.Group();scene.add(horizon);
 const mat=(c,rough=.45,metal=.25,em=0)=>new THREE.MeshStandardMaterial({color:c,roughness:rough,metalness:metal,emissive:c,emissiveIntensity:em});
+const mountainMat=mat(0x101d31,.95,.05,.08);for(let i=0;i<38;i++){const h=18+Math.random()*42,w=18+Math.random()*38;const mountain=new THREE.Mesh(new THREE.ConeGeometry(w,h,5),mountainMat);mountain.position.set((i%2?1:-1)*(70+Math.random()*170),h*.42,-120-Math.random()*1000);mountain.rotation.y=Math.random()*Math.PI;horizon.add(mountain)}
 const roadMat=mat(0x101722,.82,.1),lineMat=new THREE.MeshBasicMaterial({color:0x53f5ff}),pinkMat=new THREE.MeshBasicMaterial({color:0xff2e91}),glassMat=mat(0x102b40,.18,.65),tireMat=mat(0x080b11,.86,.05),rimMat=mat(0x9aaeba,.24,.82),lampMat=new THREE.MeshBasicMaterial({color:0xefffff}),buildingMats=[0x17263d,0x2b1738,0x12313b,0x38202d].map(c=>mat(c,.72,.2,.38));
 const floor=new THREE.Mesh(new THREE.PlaneGeometry(500,1100),mat(0x080d17,.95,.05));floor.rotation.x=-Math.PI/2;floor.position.set(0,-.12,-400);world.add(floor);
 const roadSegments=[],laneDashes=[],edgeDashes=[];
